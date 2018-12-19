@@ -351,7 +351,6 @@ sent{
           $(document).find(".chattings").find("user").parent().find("olderchat").children().remove();
         });
       });
-
       $(document).on('click','.msg_send',function(){
           var mesge = $(this).parent().find('input.msg').val();
           var frdid = $(this).parent().find('user').attr('id');
@@ -432,7 +431,6 @@ sent{
     background-color: #2980B9;margin-left: 1260px;    position: fixed;
 }  
 </style>
-
 <div class="dropup">
   <button class="dropupbtn">Chat <label>Online:</label><cht></cht></button>
   <div class="dropup-content">
