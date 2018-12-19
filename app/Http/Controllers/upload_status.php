@@ -66,6 +66,7 @@ class upload_status extends Controller
     ->join('users','comments.user_id','=','users.id')
     ->where($data)
      ->orderBy('id', 'desc')
+<<<<<<< HEAD
      ->limit(4)
     ->get();
     echo json_encode($db);
@@ -83,6 +84,8 @@ class upload_status extends Controller
     ->whereNotIn('comments.id',$request->not_need)
      ->orderBy('id', 'desc')
      ->limit(3)
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     ->get();
     echo json_encode($db);
   }
@@ -99,14 +102,21 @@ class upload_status extends Controller
       'post_id'=>$request->post_id,
          );
     $db = DB::table('comments')
+<<<<<<< HEAD
     ->select('name','profile_pic','user_comments','user_id','comments.id','post_id')
     ->join('users','comments.user_id','=','users.id')
     ->where($data)
     ->limit(4)
+=======
+    ->select('name','profile_pic','user_comments','user_id','comments.id')
+    ->join('users','comments.user_id','=','users.id')
+    ->where($data)
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     ->orderBy('id', 'desc')
     ->get();
     return $db;
   }
+<<<<<<< HEAD
   public function view_oldr_cmts_opt(Request $request){
     $data = array(
       'post_id'=>$request->post_id,
@@ -121,6 +131,9 @@ class upload_status extends Controller
     ->get();
     return $db;
   }
+=======
+
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
   public function deletecomment(Request $request){
     $data = array(
       'user_id' => auth()->user()->id,

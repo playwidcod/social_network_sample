@@ -1,8 +1,11 @@
 #!/usr/bin/env php
 <?php
 
+<<<<<<< HEAD
 define('LARAVEL_START', microtime(true));
 
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -15,7 +18,11 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+<<<<<<< HEAD
 require __DIR__.'/vendor/autoload.php';
+=======
+require __DIR__.'/bootstrap/autoload.php';
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 
 $app = require_once __DIR__.'/bootstrap/app.php';
 

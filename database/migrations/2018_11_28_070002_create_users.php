@@ -24,7 +24,10 @@ class CreateUsers extends Migration
             $table->string('profile_pic');
             $table->string('terms');
             $table->string('catagories');
+<<<<<<< HEAD
             // $table->string('api_token',60)->unique();
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
             $table->timestamps();
         });
     }

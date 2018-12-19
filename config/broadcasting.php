@@ -36,8 +36,15 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
+<<<<<<< HEAD
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'encrypted' => true,
+=======
+                //edited for websockets
+                // 'cluster'=>env('PUSHER_APP_CLUSTER'),
+                // 'encrypted'=>true
+                //edited for websockets
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
             ],
         ],
 
@@ -53,7 +60,16 @@ return [
         'null' => [
             'driver' => 'null',
         ],
+<<<<<<< HEAD
 
+=======
+         //edited for websockets
+        'options' => [
+            'cluster' => 'eu',
+            'encrypted' => true
+        ],
+         //edited for websockets
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     ],
 
 ];

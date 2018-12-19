@@ -19,6 +19,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
 class HomeController extends Controller
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     public function show(){
         return DB::table('users')->select('name','datee','gender','phone','profile_pic','email')->where('email', session()->get('email'))->get();
     }
@@ -81,6 +85,7 @@ class HomeController extends Controller
     }
 
    public function logout(Request $request){
+<<<<<<< HEAD
       
       if ($request->session()->has('id')) {
         check_online_model::where(['user_id'=>Auth::user()->id])->update(['status'=>'offline']);
@@ -90,4 +95,17 @@ class HomeController extends Controller
         return redirect('/');
       }
    }  
+=======
+      if ($request->session()->has('id')) {
+          check_online_model::where(['user_id'=>Auth::user()->id])->update(['status'=>'offline']);
+          $status_ck = check_online_model::where(['user_id'=>Auth::user()->id,'status'=>'offline'])->count();
+          if($status_ck == 1){
+            session()->flush();
+            redirect('/login');
+          }
+      }else{
+        redirect('/');
+      }
+   }    
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 }

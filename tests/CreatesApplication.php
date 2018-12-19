@@ -2,7 +2,10 @@
 
 namespace Tests;
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Hash;
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 use Illuminate\Contracts\Console\Kernel;
 
 trait CreatesApplication
@@ -18,8 +21,11 @@ trait CreatesApplication
 
         $app->make(Kernel::class)->bootstrap();
 
+<<<<<<< HEAD
         Hash::setRounds(4);
 
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
         return $app;
     }
 }

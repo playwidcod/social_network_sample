@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
 class indexcontroller extends Controller
 {
+<<<<<<< HEAD
    public function home(){
 // DB::enableQueryLog();
     $user_requested = DB::table('posts')
@@ -66,6 +67,49 @@ class indexcontroller extends Controller
     return $jsonArray1;
 
       // dd(DB::getQueryLog());
+=======
+   public function home(Request $request){
+   	$data = array(
+      'user_requested' => Auth::user()->id,
+      'status' => '1'
+         );
+    $user_requested = DB::table('posts')
+    ->select('posts.id','posts.title','posts.description','posts.post_vdo','users.name','users.profile_pic')  
+    ->join('friendships','posts.usr_id','=','friendships.requester')
+    ->join('users','friendships.requester','=','users.id')
+    ->where($data)
+    ->offset($request->offset)
+    ->limit($request->limit)
+    ->get();
+
+    $data1 = array(
+      'requester' => Auth::user()->id,
+      'status' => '1'
+         );
+    $user_requested1 = DB::table('posts')
+    ->select('posts.id','posts.title','posts.description','posts.post_vdo','users.name','users.profile_pic')  
+    ->join('friendships','posts.usr_id','=','friendships.user_requested')
+    ->join('users','friendships.user_requested','=','users.id')
+    ->where($data1)
+    ->offset($request->offset)
+    ->limit($request->limit)
+    ->get();
+    $arr1 = json_decode($user_requested1);
+    $arr = json_decode($user_requested);
+    $jsonArray1 = array_merge($arr,$arr1);
+     //newly updated likes start
+   $new_arr =  array();
+    foreach ($jsonArray1 as $key => $value) {
+      $value = get_object_vars($value);
+      $wth_lk = user_likes_comments::where(['post_id'=>$value['id']])->count();
+      $ses_usr_lkd = user_likes_comments::select('user_like')->where(['post_id'=>$value['id'],'user_id'=>Auth::user()->id])->get();
+      $likeval = json_decode(json_encode($ses_usr_lkd),True);
+      $value['likes'] = $wth_lk;
+      $value['auth_lkd'] = $likeval;
+      array_push($new_arr, $value);
+    }
+    echo json_encode($new_arr);
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
    }
    public function edit(Request $request){
    	$data = new larav_model();
@@ -73,6 +117,7 @@ class indexcontroller extends Controller
    	$data->gender = $request->gender;
    	$data->email = $request->email;
    	$data->phone = $request->phone; 
+<<<<<<< HEAD
     
     if($request->profile_pic){
       $file = $request->file('profile_pic');
@@ -82,6 +127,14 @@ class indexcontroller extends Controller
       // $image = explode(".",$image);
       $data->profile_pic = $image;
     }
+=======
+    if($request->profile_pic){
+     $image = $request->profile_pic->store('public/downloads');
+     $image = explode("/",$image);
+     $data->profile_pic = $image[2];
+    }
+    // print_r($data);exit;
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
    	DB::table('users')->where('id', Auth()->user()->id)->update($data->toArray());
    	return redirect('/editpro');
    }

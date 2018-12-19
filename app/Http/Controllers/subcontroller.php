@@ -33,16 +33,21 @@ class subcontroller extends Controller
      unlink("file:///home/bsetec/Downloads/htdocs/blog/storage/app/public/downloads/thumbnail/".$request->src.".jpg");
   }
     public function profile(){
+<<<<<<< HEAD
     $test = DB::table('posts')
     ->select('posts.id','email','title','post_vdo','description')
     // ->join('likes','posts.id','=','likes.post_id')
     ->where("posts.usr_id",session()->get('id'))
     ->get();
 
+=======
+    $test = DB::table('posts')->select('id','email','title','post_vdo','description')->where("usr_id",session()->get('id'))->get();
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     $tests = array();
     foreach ($test as $key => $value) {
        $id = get_object_vars($value)['id'];
        $s = DB::table('likes')->select('user_like')->where(['post_id' => $id])->get();
+<<<<<<< HEAD
         $s = json_decode(json_encode($s),True);
         foreach ($s as $key => $values) {
           $s = $values['user_like'];
@@ -51,6 +56,10 @@ class subcontroller extends Controller
         // exit;
        $fnl_wth_lk = get_object_vars($value);
        $fnl_wth_lk['likes'] = $s;
+=======
+       $fnl_wth_lk = get_object_vars($value);
+       $fnl_wth_lk['likes'] = count($s);
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
        array_push($tests, $fnl_wth_lk);
     } 
     echo json_encode($tests);

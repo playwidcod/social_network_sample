@@ -43,6 +43,7 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
+<<<<<<< HEAD
 // import Echo from 'laravel-echo'
 
 // window.Pusher = require('pusher-js');
@@ -53,3 +54,13 @@ if (token) {
 //     cluster: 'mt1',
 //     encrypted: true
 // });
+=======
+import Echo from 'laravel-echo'
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'your-pusher-key'
+});
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45

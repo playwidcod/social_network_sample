@@ -16,5 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+<<<<<<< HEAD
 
 Route::get('/socio','socialnetwork@first_api');
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45

@@ -97,7 +97,10 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+<<<<<<< HEAD
         
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     ],
 
 ];

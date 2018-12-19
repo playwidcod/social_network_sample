@@ -10,7 +10,10 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+<<<<<<< HEAD
     |
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     */
 
     'name' => env('APP_NAME', 'Laravel'),
@@ -163,17 +166,30 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+<<<<<<< HEAD
         Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Package Service Providers...
          */
+=======
+      //  Collective\Html\HtmlServiceProvider::class,
+
+        /*
+         * Package Service Providers...
+         */
+        Laravel\Tinker\TinkerServiceProvider::class,
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+<<<<<<< HEAD
         // App\Providers\BroadcastServiceProvider::class,
+=======
+        App\Providers\BroadcastServiceProvider::class,
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -227,7 +243,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+<<<<<<< HEAD
          'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+=======
+
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
     ],
 
 ];

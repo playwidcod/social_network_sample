@@ -53,6 +53,7 @@ p{
   <update>Update</update></popups><br> -->
 </popups>
 <script>
+<<<<<<< HEAD
 function get_comments(post_id,not_need){
       $.ajax({
         headers: {
@@ -77,6 +78,9 @@ function get_comments(post_id,not_need){
           }
       });
     }
+=======
+
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
  $(document).ready(function(){
  
        $.ajax({ 
@@ -86,7 +90,11 @@ function get_comments(post_id,not_need){
           success: function(data){
             $.each(data, function(){
               file = this.post_vdo.split('.');
+<<<<<<< HEAD
               $(".post").append('<div class="title li-item hide" ><h3 id="title'+this.id+'">'+this.title+'</h3><input type="hidden" class="post_id" id="post_id'+this.id+'" value="'+this.id+'"><input type="hidden" class="sr" value="'+file[0]+'"><div class="video"><img src="{{URL('/')}}/storage/downloads/thumbnail/'+file[0]+'.jpg" height="240" width="315"><video autoplay muted style="display:none;" width="320" height="240" controls><source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/'+this.post_vdo+'" type="video/mp4"><source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/'+this.post_vdo+'" type="video/mp4"><source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/'+this.post_vdo+'" type="video/mp4">Your browser does not support the video tag.</video></div><div class="description"><p><b>Description:</b>&nbsp;<des id="desc'+this.id+'">'+this.description+'</des></p></div><button class="delete">Delete the post</button><p><button class="myBtn'+this.id+'" id="myBtn">Edit Post</button></p>&nbsp;&nbsp;&nbsp;Like:&nbsp;<like>'+this.likes+'</like><br><br><b>Comments:</b><comments class="comments'+this.id+'"></comments><textarea class="comment" placeholder="comment here..."></textarea><br><button class="user_comment" style="background:#3187aa;color:white;">Comment</button></div></div>'); 
+=======
+              $(".post").append('<div class="title li-item hide" ><h3>'+this.title+'</h3><input type="hidden" class="post_id" value="'+this.id+'"><input type="hidden" class="sr" value="'+file[0]+'"><div class="video"><img src="{{URL('/')}}/storage/downloads/thumbnail/'+file[0]+'.jpg" height="240" width="315"><video autoplay muted style="display:none;" width="320" height="240" controls><source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/'+this.post_vdo+'" type="video/mp4"><source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/'+this.post_vdo+'" type="video/mp4"><source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/'+this.post_vdo+'" type="video/mp4">Your browser does not support the video tag.</video></div><div class="description"><p><b>Description:</b>&nbsp;<des>'+this.description+'</des></p></div><button class="delete">Delete the post</button><p><button id="myBtn">Edit Post</button></p>&nbsp;&nbsp;&nbsp;Like:&nbsp;<like>'+this.likes+'</like><br><br><b>Comments:</b><comments class="comments'+this.id+'"></comments><textarea class="comment" placeholder="comment here..."></textarea><br><button class="user_comment" style="background:#3187aa;color:white;">Comment</button></div></div>'); 
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 
 $(".video").hover(function(){
     $(this).parent().find(".video").children("img").css({"display":"none"});
@@ -116,10 +124,18 @@ $(".video").hover(function(){
                     data:{lk_ct:this.id},
                     success:function(data){
 
+<<<<<<< HEAD
                           var i = 0;
                         $.each(data,function(){
                               i++;
                              $(document).find('.comments'+this.post_id+'').append('<div class="row" id='+this.id+'><img height="20" width="20" src="{{URL('/')}}/storage/downloads/'+this.profile_pic+'"><usr>'+this.name+'</usr><br><b>Comment:</b><li>'+this.user_comments+'</li><button id="delete_cmt'+this.id+'" class="delete_cmt">Delete</button><hr></div>');
+=======
+                      // console.log(data);
+                          var i = 0;
+                        $.each(data,function(){
+                              i++;
+                             $(document).find('.comments'+this.post_id+'').append('<div class="row" id='+this.id+'><img height="20" width="20" src="{{URL('/')}}/storage/downloads/'+this.profile_pic+'"><usr>'+this.name+'</usr><br><b>Comment:</b><li>'+this.user_comments+'</li><button class="delete_cmt">Delete</button><hr></div>');
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
                              
                              if(data.length > 3){
                               $(document).find('.comments'+this.post_id+'').parent().addClass('active'+this.post_id+'');
@@ -143,6 +159,7 @@ $(".video").hover(function(){
                   $(".loadMore").parent().parent().removeClass("test");
                   $(this).parent().parent().addClass("test");
                                 e.preventDefault();
+<<<<<<< HEAD
                                 // $(this).parent().parent().find(".row:hidden").slice(0, 3).slideDown();
           get_cmt_lt = parseInt($(this).parent().parent().find("comments").children("div.row:visible").length);
                         not_need = new Array();
@@ -169,6 +186,15 @@ $(".video").hover(function(){
                                 // $('html,body').animate({
                                 //     scrollTop: $(this).offset().top
                                 // }, 1500);
+=======
+                                $(this).parent().parent().find(".row:hidden").slice(0, 2).slideDown();
+                                if ($(this).parent().parent().find(".row:hidden").length == 0) {
+                                    $("#load").fadeOut('slow');
+                                }
+                                $('html,body').animate({
+                                    scrollTop: $(this).offset().top
+                                }, 1500);
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
                             });
    $(document).on('click',".delete",function(){
 
@@ -229,7 +255,11 @@ $(document).on('click',".user_comment",function(){
                                           if(i == data.length){
                                             $(document).find(".active"+this.post_id+"").find('comments').children(".row").slice(1, data.length).hide();
                                             $(document).find(".active"+this.post_id+"").find('comments').children(".loadMore").remove();
+<<<<<<< HEAD
                                             $(document).find(".active"+this.post_id+"").find('comments').append('<button style="float:left;" class="loadMore">Load more</button>');
+=======
+                                            $(document).find(".active"+this.post_id+"").find('comments').append('<button style="float:left;" class="loadMore">Load more</button><br><br>');
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
                                           }
                                        }
                                   });
@@ -241,18 +271,27 @@ $(document).on('click',".user_comment",function(){
             });
   $(document).on('click',"#myBtn",function(){
     $(window).scrollTop(0);
+<<<<<<< HEAD
     $("popups.popups").children().remove();
        var title = $(this).parent().parent().find("h3").html();
        var description = $(this).parent().parent().find("des").html();
         var id = $(this).parent().parent().find("input.post_id").val();
        
         $("popups.popups").append('<h1>Update Your Post</h1><label>Title :</label><input style="white-space: pre;" type="text" name="tile" class="tile" value="'+title+'"><br><label>Description :</label><input type="text" name="descr" class="descr" value="'+description+'"><br><br><button class="update_pos">Update</button><button class="close">close</button>').slideDown();
+=======
+       var title = $(this).parent().parent().find("h3").html();
+       var description = $(this).parent().parent().find("des").html();
+        var id = $(this).parent().parent().find("input.post_id").val();
+       $("popups.popups").html('');
+        $("popups.popups").slideDown().append('<h1>Update Your Post</h1><label>Title :</label><input type="text" name="tile" class="tile" value='+title+'><br><label>Description :</label><input type="text" name="descr" class="descr" value='+description+'><br><br><button class="update_pos">Update</button><button class="close">close</button>');
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
         $("button.close").on('click',function(){
             $("popups.popups").slideUp();
         });
         $(".update_pos").on('click',function(){
             title = $(this).parent().find(".tile").val();
             description = $(this).parent().find(".descr").val();
+<<<<<<< HEAD
             if(title == ''){
               alert("please enter title");
               return false;
@@ -261,6 +300,8 @@ $(document).on('click',".user_comment",function(){
               alert("please enter description");
               return false;
             }
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
             $.ajax({
               headers: {
                           'X-CSRF-Token': "{{csrf_token()}}"
@@ -270,17 +311,31 @@ $(document).on('click',".user_comment",function(){
                     data:{title:title,id:id,description:description},
                     dataType:'html',
                     success:function(data){
+<<<<<<< HEAD
 
                       $("input#post_id"+id+".post_id").parent().find("h3#title"+id+"").html(title);
                       $("input#post_id"+id+".post_id").parent().children().find("des#desc"+id+"").html(description);
                       $("popups.popups").slideUp();
                       // alert("updated");
+=======
+                      $("popups.popups").slideUp();
+                      alert("updated");
+                      location.reload();
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
                     }
             });
         });
   });
+<<<<<<< HEAD
   
     $(document).on('click','.delete_cmt',function(){
+=======
+
+ 
+
+    $(document).on('click','.delete_cmt',function(){
+        // $(this).parent().parent().find("div#231.row").css({"background":"red"}).remove();
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
         var comt_id = $(this).parent().attr('id');
         var post_id = $(this).parent().parent().parent().children("input.post_id").val();
         $.ajax({
@@ -292,6 +347,7 @@ $(document).on('click',".user_comment",function(){
           data:{comt_id:comt_id},
           dataType:'html',
           success:function(data){
+<<<<<<< HEAD
             $("comments.comments"+post_id+"").find("div#"+comt_id+".row").next().show();
             $("comments.comments"+post_id+"").find("div#"+comt_id+".row").remove();
 
@@ -305,6 +361,37 @@ $(document).on('click',".user_comment",function(){
         });
     });
     
+=======
+              $("comments.comments"+post_id+"").children("div.row").remove();
+              $.ajax({
+                              headers: {
+                                  'X-CSRF-Token': "{{csrf_token()}}"
+                                },                                                                                            
+                              url:"/comments_viewable",
+                              type:'post',
+                              dataType:'json',
+                              data:{lk_ct:post_id},
+                              success:function(data){
+
+                                    var i = 0;
+                                  $.each(data,function(){
+                                        i++;
+                                       $(document).find('.comments'+this.post_id+'').append('<div class="row" id='+this.id+'><img height="20" width="20" src="{{URL('/')}}/storage/downloads/'+this.profile_pic+'"><usr>'+this.name+'</usr><br><b>Comment:</b><li>'+this.user_comments+'</li><button class="delete_cmt">Delete</button><hr></div>');
+                                       if(data.length > 3){
+                                        $(document).find('.comments'+this.post_id+'').parent().addClass('active'+this.post_id+'');
+                                          if(i == data.length){
+                                            $(document).find(".active"+this.post_id+"").find('comments').children(".row").slice(1, data.length).hide();
+                                            $(document).find(".active"+this.post_id+"").find('comments').children(".loadMore").remove();
+                                            $(document).find(".active"+this.post_id+"").find('comments').append('<button style="float:left;" class="loadMore">Load more</button><br><br>');
+                                          }
+                                       }
+                                  });
+                              }
+                          });
+          }
+        });
+    });
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
  });   
 </script>
 <h1 align="center"><username></username>
@@ -314,7 +401,11 @@ $(document).on('click',".user_comment",function(){
 </h1>
 <br>
 <post  class="post" id="listShow">		
+<<<<<<< HEAD
 </post>
+=======
+</post><br>
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 
 </body>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

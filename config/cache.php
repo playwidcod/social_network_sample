@@ -86,9 +86,13 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'prefix' => env(
         'CACHE_PREFIX',
         str_slug(env('APP_NAME', 'laravel'), '_').'_cache'
     ),
+=======
+    'prefix' => 'laravel',
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
 
 ];
