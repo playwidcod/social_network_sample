@@ -198,19 +198,35 @@ sent{
                      $scope.bdaypro = year_age;
                      //for date
                      //forpost
-                     // $scope.editpro_upd = function(){
-                     //    console.log($scope.namepro)
-                     //    console.log($scope.phonepro)
-                     //    console.log($scope.dateepro)
-                     //    console.log($scope.testtpro)
-                     //    console.log($scope.emailpro)
-                     //      // $http.post('/updatepro', $scope).success(function(data) {
-                     //      //    // datee =  $scope.dateepro;
-                     //      //    // gender = $scope.gender;
-                     //      //    // phone = $scope.phonepro;
-                     //      //    // profile_pic =  $scope.profile_pic;
-                     //      // });
-                     // }
+                     $scope.editpro_upd = function(){
+                        console.log($scope.namepro)
+                        console.log($scope.phonepro)
+                        console.log($scope.dateepro)
+                        console.log($scope.testtpro)
+                        console.log($scope.emailpro)
+                        var data = {
+                                        name : $scope.namepro,
+                                        phone : $scope.phonepro,
+                                        gender : $scope.gender,
+                                        datee : $scope.dateepro,
+                                        email : $scope.emailpro,
+                                        profile_pic : $scope.testtpro
+                                    };
+                          $http.post('/updatepro',data).success(function(data, status, headers, config) {
+                            console.log(data)
+                            console.log(status)
+                            console.log(headers)
+                            console.log(config)
+                             // datee =  $scope.dateepro;
+                             // gender = $scope.gender;
+                             // phone = $scope.phonepro;
+                             // profile_pic =  $scope.profile_pic;
+                          });
+                          // var res = $http.post('/updatepro', dataObj);
+                          //   res.success(function(data, status, headers, config) {
+                          //     $scope.message = data;
+                          //   });
+                     }
                      //forpost
               });
         });

@@ -125,62 +125,62 @@ $(document).ready(function(){
 	});	
 
 
-    		$('form[id="form"]').validate({
-      rules: {
-        username: 'required',
-        datee: 'required',
-        terms: 'required',
-        phone: 'required',
-        username: {
-          required: true,
-          minlength: 5,
-        },
-        email: {
-          required: true,
-          email: true
-        },
-        password: {
-          required: true,
-          minlength: 6,
-        },
-        phone:{
-        required:true,		
-         number:true,
-         minlength:10,
-         maxlength:12
-        },
-        bday:{		
-         number:true,
-         min:18,
-         max:100
-        }
-      },
-      messages: {
-        username: 'This field is required',
-        datee: 'This field is required',
-        phone: 'This field is required',
-        email: 'Enter a valid email',
-        password: {
-          minlength: 'Password must be at least 6 characters long'
-        },
-        username: {
-          minlength: 'Password must be at least 5 characters long'
-        },
-        phone: {
-          minlength: 'enter below 10 not valid number',
-          maxlength: 'not valid number'
-        },
-        bday:{
-          minlength:'Above 18 years of age is only allowed',
-          max:'Not a valid date'
-        } 
-      },
-      submitHandler: function(form) {
-        // alert(form);
-        form.submit();
-        // sum_upd(form);
-      }
-    });	
+    // 		$('form[id="form"]').validate({
+    //   rules: {
+    //     username: 'required',
+    //     datee: 'required',
+    //     terms: 'required',
+    //     phone: 'required',
+    //     username: {
+    //       required: true,
+    //       minlength: 5,
+    //     },
+    //     email: {
+    //       required: true,
+    //       email: true
+    //     },
+    //     password: {
+    //       required: true,
+    //       minlength: 6,
+    //     },
+    //     phone:{
+    //     required:true,		
+    //      number:true,
+    //      minlength:10,
+    //      maxlength:12
+    //     },
+    //     bday:{		
+    //      number:true,
+    //      min:18,
+    //      max:100
+    //     }
+    //   },
+    //   messages: {
+    //     username: 'This field is required',
+    //     datee: 'This field is required',
+    //     phone: 'This field is required',
+    //     email: 'Enter a valid email',
+    //     password: {
+    //       minlength: 'Password must be at least 6 characters long'
+    //     },
+    //     username: {
+    //       minlength: 'Password must be at least 5 characters long'
+    //     },
+    //     phone: {
+    //       minlength: 'enter below 10 not valid number',
+    //       maxlength: 'not valid number'
+    //     },
+    //     bday:{
+    //       minlength:'Above 18 years of age is only allowed',
+    //       max:'Not a valid date'
+    //     } 
+    //   },
+    //   submitHandler: function(form) {
+    //     // alert(form);
+    //     form.submit();
+    //     // sum_upd(form);
+    //   }
+    // });	
 });
 </script>
 
