@@ -73,7 +73,7 @@ class indexcontroller extends Controller
    	$data->gender = $request->gender;
    	$data->email = $request->email;
    	$data->phone = $request->phone; 
-    
+    // print_r($data);exit;
     if($request->profile_pic){
       $file = $request->file('profile_pic');
       $extension = $file->getClientOriginalExtension();
@@ -83,7 +83,8 @@ class indexcontroller extends Controller
       $data->profile_pic = $image;
     }
    	DB::table('users')->where('id', Auth()->user()->id)->update($data->toArray());
-   	return redirect('/editpro');
+    echo "Updated";
+   	// return redirect('/editpro');
    }
      public function getstatus(Request $request){
 

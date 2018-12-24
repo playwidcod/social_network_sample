@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/jpages/0.7/js/jPages.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{URL('/')}}/storage/Client-Side-Pagination-Plugin-jQuery-cPager/css/cPager.css">
 <script src="{{URL('/')}}/storage/Client-Side-Pagination-Plugin-jQuery-cPager/js/cPager.js"></script>
-
+<script src="http://localhost:8000/storage/js_files/profile.js"></script>
 
 <style type="text/css">
 .title{
@@ -43,16 +43,26 @@ p{
   border:5px inset #3187ab;
   margin-left: 500px;
   position: fixed;
-}  
+} 
+.video {
+ max-width: 600px; 
+  overflow: hidden;
+}
+
+.videosList {
+  height: 330px;
+  width: 600px;
+  margin-bottom: 50px;
+}
+
+/* Hide Play button + controls on iOS */
+video::-webkit-media-controls {
+    display:none !important;
+} 
 </style>
 
-<popups class="popups" align="center" style="display: none;">
-<!--   <h1>Update Your Post</h1>
-  <label>Title :</label><input type="text" name="tile" class="tile"><br>
-  <label>Description :</label><input type="text" name="descr" class="descr"><br>
-  <update>Update</update></popups><br> -->
-</popups>
-<script>
+
+<!--script>
 function get_comments(post_id,not_need){
       $.ajax({
         headers: {
@@ -81,7 +91,7 @@ function get_comments(post_id,not_need){
  
        $.ajax({ 
            type: "GET", 
-           url: '/profile_dat', 
+           url: '/profile_datt', 
            dataType: 'json',
           success: function(data){
             $.each(data, function(){
@@ -306,17 +316,114 @@ $(document).on('click',".user_comment",function(){
     });
     
  });   
-</script>
+</script-->
 <h1 align="center"><username></username>
   <div align="left" class="turn-page" id="pager"></div><br>
-<img class="profile" style="height: 50px;width: 50px;"><hr>
+<img ng-src="@{{testtpro}}" class="profile" style="height: 50px;width: 50px;"><hr>
 
 </h1>
 <br>
-<post  class="post" id="listShow">		
+<script>
+ app.controller('profil', function($scope, $http) {
+$http.get("http://localhost:8000/profile_dat").then(function(response) {
+    $scope.users_posts = response.data;
+    $scope.edit_postprof = function(x){
+      $("popups").css({"display":"block"});
+      $scope.edit_titleprof = x.title;
+      $scope.edit_descprof = x.description;
+      $scope.edit_idprof = x.id;
+      }
+      $scope.upd_profpost = function(profpost){
+          upd_title = $(".titleupd").val();
+          upd_desc = $(".descriptionupd").val();
+          upd_postid =$(".idupd").val();
+          data = {title:upd_title,description:upd_desc,id:upd_postid};
+        $http.post("http://localhost:8000/upd_post",data)
+          .then(function (data, status, headers, config) {
+            alert(data.data);
+            $("popups").css({"display":"none"});
+            });
+        }
+      $scope.updpost_cncl = function(){
+        $("popups").css({"display":"none"});
+      }
+      
+      $scope.delete_profpost = function(x){
+        user_post = x.id;
+        file = x.post_vdo.split(".");
+        src = file[0];
+        // console.log(src);return false;
+        data ={user_post:user_post,src:src};
+        $http.post("http://localhost:8000/deletepost",data)
+        .then(function(data, status, headers, config){
+          alert(data.data);
+          $(document).find("div.title").children("comments.comments"+user_post+"").parent().remove();
+        });
+      }
+      $scope.prof_comment = function(cmt,x){
+        comment = cmt.prof_comt;
+        post_id = x.id;
+        data = {post_id:post_id,comment:comment};
+        $http.post("http://localhost:8000/comment",data)
+        .then(function(data, status, headers, config){
+          alert(data.data);
+          $("comments.comments"+post_id+"").children("div.row").remove();
+          $('.comment').val('');
+          $("comments.comments"+post_id+"").siblings("button.user_comment").prop("disabled",false);
+          
+            dataa = {lk_ct:post_id};
+            console.log(data);
+            $http.post("http://localhost:8000/comments_viewable",dataa)
+            .then(function(data, status, headers, config){
+              var i = 0;
+              data2 = data.data;
+            });
+        });
+      }
+    });
+ });
+ 
+</script>
+<div ng-controller="profil">
+<popups class="popups" align="center" style="display:none;margin-top:-193px">
+  <h1>Update Your Post</h1>
+  <input type="hidden" class="idupd" ng-value="edit_idprof">
+  <label>Title :</label><input type="text" class="titleupd" ng-value="edit_titleprof" name="tile" class="tile"><br>
+  <label>Description :</label><input type="text" class="descriptionupd" ng-value="edit_descprof" name="descr" class="descr"><br>
+  &nbsp;<button ng-click="upd_profpost(profpost)">Update</button>&nbsp;&nbsp;<button ng-click="updpost_cncl()">Cancel</button><br>
+</popups>
+<post  class="post" id="listShow">
+<div ng-repeat="x in users_posts">
+<div style="display:none;">
+@{{file = x.post_vdo.split(".")}}
+</div>
+<div class="title li-item hide" >
+<h3 id="title@{{x.id}}" ng-model="titleprof">@{{x.title}}</h3>
+<input type="hidden" ng-model="post_idprof" class="post_id" id="post_id@{{x.id}}" value="@{{x.id}}">
+<input type="hidden" ng-model="srprof" class="sr" value="@{{file[0]}}">
+<div class="video">
+<img class="imghover" src="{{URL('/')}}/storage/downloads/thumbnail/@{{file[0]}}.jpg" height="240" width="315">
+<video loop preload="none" style="display:none;" width="320" height="240" controls class="videosList">
+<source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/@{{x.post_vdo}}" type="video/mp4">
+<source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/@{{x.post_vdo}}" type="video/mp4">
+<source class="vdo" src="{{URL('/')}}/storage/downloads/videofolder/@{{x.post_vdo}}" type="video/mp4">
+Your browser does not support the video tag.</video>
+</div>
+<div class="description"><p><b>Description:</b>&nbsp;
+<des id="desc@{{x.id}}" ng-model="descriptionprof">@{{x.description}}</des></p>
+</div><button class="delete" ng-click="delete_profpost(x)">Delete the post</button>
+<p><button class="myBtn@{{x.id}}" ng-click="edit_postprof(x)" id="myBtn">Edit Post</button>
+</p>&nbsp;&nbsp;&nbsp;Like:&nbsp;<like>@{{x.likes}}</like><br><br>
+<b>Comments:</b><comments class="comments@{{x.id}}"></comments>
+<textarea ng-model="cmt.prof_comt" class="comment" placeholder="comment here..."></textarea><br>
+<button ng-click="prof_comment(cmt,x)" class="user_comment" style="background:#3187aa;color:white;">Comment</button>
+</div>
+</div>
+</div>		
 </post>
-
+</div>
 </body>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 

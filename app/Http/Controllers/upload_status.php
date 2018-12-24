@@ -90,9 +90,10 @@ class upload_status extends Controller
 
         $fs_lk_wn_cmt = new user_comments;
         $fs_lk_wn_cmt->user_comments = $request->comment;
-        $fs_lk_wn_cmt->user_id = $request->user_id;
+        $fs_lk_wn_cmt->user_id = auth::user()->id;
         $fs_lk_wn_cmt->post_id = $request->post_id;
         $fs_lk_wn_cmt->save();
+        echo "success";
   }
   public function view_oldr_cmts(Request $request){
     $data = array(

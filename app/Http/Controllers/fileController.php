@@ -20,6 +20,11 @@ class fileController extends Controller
 {
    public function user_post(Request $request){
 
+    $this->validate($request, [
+        'title' => 'required',
+        'description' => 'required',
+        'post_vdo' => 'required',
+    ]);
     $data = new posts_model();
     $data->email = session()->get('email');
     $data->title = $request->title;
@@ -28,7 +33,7 @@ class fileController extends Controller
     $video = uniqid().".".$file->getClientOriginalExtension();
     $file->move(public_path()."/storage/downloads/videofolder/",$video);
     $video_arr = explode(".",$video);
-    $vido_url = "/opt/lampp/htdocs/blog/public/storage/downloads/videofolder/".escapeshellcmd($video);
+    $vido_url = public_path()."/downloads/videofolder/".escapeshellcmd($video);
     $cmd = "ffmpeg -i $vido_url 2>&1";
     $second = 5;
 
@@ -58,6 +63,7 @@ class fileController extends Controller
                         'user_like' => 0
                     );
     user_likes_comments::insert($like_update);
-    return redirect('/profile');
+    echo "success";
+    // return redirect('/profile');
   }
 }

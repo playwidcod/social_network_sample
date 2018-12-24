@@ -4,34 +4,35 @@
     <img ng-src="@{{testtpro}}" class="profile" align="center" style="border:2px solid grey;height: 60px;width: 60px;"></img><br>
     <b>
       <label>Hi </label><username ng-bind="namepro"></username></b>
-    <form id="form" method="post" enctype="multipart/form-data"> 
+    <form id="form" method="post" name="postme"  ng-submit="editpro_upd()" enctype="multipart/form-data" novalidate> 
     <!-- <form id="form" method="post" enctype="multipart/form-data">  -->
     	<input type = "hidden" name = "_token" value = "{{csrf_token()}}">
     <br>
     Date of Birth:<br> 
-    <input type="date" name="datee" class="datee" data-validation="birthdate" data-validation-help="" ng-value="dateepro"> <br>
+    <input ng-model="mydateOfBirth" ng-change="formo()" type="date" name="datee" class="datee" data-validation="birthdate" data-validation-help="" ng-value="dateepro" required> 
+    <br>
     Your age:<input type="text" readonly style="width:25px;" name="bday" class="bday" data-validation="birthdate" data-validation-help="" ng-value="bdaypro"> 
     <br> 
     <br> 
     gender:<br> 
     male
-    <input type="radio" name="gender" id="male" class="gender" value="male" ng-checked="malepro"> 
-    female<input type="radio" id="female" name="gender" class="gender" value="female" ng-checked="femalepro"> 
+    <input type="radio" name="gender" id="male" class="gender" value="male" ng-checked="malepro" ng-model="$parent.gender"> 
+    female<input type="radio" id="female" name="gender" class="gender" value="female" ng-checked="femalepro"  ng-model="$parent.gender"> 
     <br> <br> 
-
-    <input type="hidden" name="email" class="email" data-validation="email" readonly ng-value="emailpro">
-
+    <input type="hidden" name="email" class="email" data-validation="email" readonly ng-model="emailpro" ng-value="emailpro">
     Phone:<br> 
-    <input type="text" name="phone" class="phone" onkeypress="return isNumberKey(event)" data-validation="number" data-validation-length="min10" maxlength="10" ng-value="phonepro"> 
+    <input type="text" name="phone" class="phone" ng-minlength="10" ng-maxlength="10" ng-model="phonepro" ng-value="phonepro" required> 
+    <span ng-show="postme.phone.$error.maxlength" style="color:red">Number not valid.</span>
+    <span ng-show="postme.phone.$error.minlength" style="color:red">Number not valid.</span>
     <br> 
     <br> 
     Upload profile Picture:<br> 
-    <input type="file" name="profile_pic" class="profile_pic" accept="image/*"> 
-
+    <input type="file" file-input="files" name="profile_pic" class="profile_pic" accept="image/*"> 
     <br>
     <br> 
-    <input type="submit" value="Submit" class="submit" ng-click="editpro_upd()"> 
+    <input type="submit" value="Submit" class="submit" ng-disabled="postme.phone.$error.maxlength || postme.phone.$error.minlength"> 
     </form>
+
 </div>
 <style type="text/css">
 
@@ -183,4 +184,3 @@ $(document).ready(function(){
     // });	
 });
 </script>
-

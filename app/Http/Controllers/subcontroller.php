@@ -23,14 +23,16 @@ class subcontroller extends Controller
       'description'=>$request->description
     );
     DB::table('posts')->where(['id'=>$request->id])->update($data);
+    echo "updated";
   }
    public function deletepost(Request $request){
     $data = array(
       'id' => $request->user_post
     );
     DB::table('posts')->where($data)->delete();
-     unlink("file:///home/bsetec/Downloads/htdocs/blog/storage/app/public/downloads/videofolder/".$request->src.".mp4");
-     unlink("file:///home/bsetec/Downloads/htdocs/blog/storage/app/public/downloads/thumbnail/".$request->src.".jpg");
+     unlink("/opt/lampp/htdocs/blog/public/storage/downloads/videofolder/".$request->src.".mp4");
+     unlink("/opt/lampp/htdocs/blog/public/storage/downloads/thumbnail/".$request->src.".jpg");
+     echo "Deleted Successfully";
   }
     public function profile(){
     $test = DB::table('posts')

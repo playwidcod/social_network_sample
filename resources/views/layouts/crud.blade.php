@@ -164,6 +164,20 @@ sent{
 <script>
     //angular
       var app = angular.module('myApp', []);
+     
+      app.directive("fileInput", function($parse){  
+      return{  
+           link: function($scope, element, attrs){  
+                element.on("change", function(event){  
+                     var files = event.target.files;  
+                     //console.log(files[0].name);  
+                     $parse(attrs.fileInput).assign($scope, element[0].files);  
+                     $scope.$apply();  
+                });  
+           }  
+      }  
+ }); 
+
       app.controller('myCtrl', function($scope, $http) {
 
         $http.get("http://localhost:8000/test").then(function(response) {
@@ -196,37 +210,39 @@ sent{
                         alert("Happy B'day!!!");
                     }
                      $scope.bdaypro = year_age;
-                     //for date
-                     //forpost
-                     $scope.editpro_upd = function(){
-                        console.log($scope.namepro)
-                        console.log($scope.phonepro)
-                        console.log($scope.dateepro)
-                        console.log($scope.testtpro)
-                        console.log($scope.emailpro)
-                        var data = {
-                                        name : $scope.namepro,
-                                        phone : $scope.phonepro,
-                                        gender : $scope.gender,
-                                        datee : $scope.dateepro,
-                                        email : $scope.emailpro,
-                                        profile_pic : $scope.testtpro
-                                    };
-                          $http.post('/updatepro',data).success(function(data, status, headers, config) {
-                            console.log(data)
-                            console.log(status)
-                            console.log(headers)
-                            console.log(config)
-                             // datee =  $scope.dateepro;
-                             // gender = $scope.gender;
-                             // phone = $scope.phonepro;
-                             // profile_pic =  $scope.profile_pic;
-                          });
-                          // var res = $http.post('/updatepro', dataObj);
-                          //   res.success(function(data, status, headers, config) {
-                          //     $scope.message = data;
-                          //   });
+
+                     $scope.gender = value.gender;
+                      $scope.datee = value.datee;
+                     $scope.formo = function(){
+
+                            datee = $scope.mydateOfBirth;
+                            console.log(datee);
+                            datee = parseInt(datee.getFullYear())+"-"+parseInt(datee.getMonth()+1)+"-"+parseInt(datee.getDate());
+                            return $scope.datee = datee;
                      }
+
+                        $scope.editpro_upd = function(){
+                          
+                         var form_data = new FormData();  
+                           angular.forEach($scope.files, function(file){ 
+
+                                form_data.append('profile_pic', file);  
+                           });  
+                           form_data.append('phone',$scope.phonepro);
+                           form_data.append('gender',$scope.gender);
+                           form_data.append('datee',$scope.datee);
+                           form_data.append('email',$scope.emailpro);
+
+                           $http.post('updatepro', form_data,  
+                           {  
+                                transformRequest: angular.identity,  
+                                headers: {'Content-Type': undefined,'Process-Data': false}  
+                           }).then(function(data, status, headers, config){  
+                                alert(data.data);  
+                                $scope.select();  
+                           }); 
+                     }
+                     
                      //forpost
               });
         });
