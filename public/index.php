@@ -7,8 +7,16 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+<<<<<<< HEAD
 define('LARAVEL_START', microtime(true));
 
+=======
+<<<<<<< HEAD
+define('LARAVEL_START', microtime(true));
+
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -21,7 +29,15 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+<<<<<<< HEAD
 require __DIR__.'/../vendor/autoload.php';
+=======
+<<<<<<< HEAD
+require __DIR__.'/../vendor/autoload.php';
+=======
+require __DIR__.'/../bootstrap/autoload.php';
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 
 /*
 |--------------------------------------------------------------------------

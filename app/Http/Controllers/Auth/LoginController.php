@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 // use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Auth;
@@ -14,6 +18,12 @@ use App\User;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 class LoginController extends Controller
 {
     /*
@@ -48,6 +58,10 @@ class LoginController extends Controller
     public function login(){
         return view('login');
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 
     public function redirectToProvider(){
 
@@ -73,4 +87,9 @@ class LoginController extends Controller
         //     return  view('register');
         // }
     }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 }

@@ -29,7 +29,15 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'lifetime' => env('SESSION_LIFETIME', 120),
+=======
+<<<<<<< HEAD
+    'lifetime' => env('SESSION_LIFETIME', 120),
+=======
+    'lifetime' => 120,
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 
     'expire_on_close' => false,
 
@@ -122,10 +130,20 @@ return [
     |
     */
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
     'cookie' => env(
         'SESSION_COOKIE',
         str_slug(env('APP_NAME', 'laravel'), '_').'_session'
     ),
+<<<<<<< HEAD
+=======
+=======
+    'cookie' => 'laravel_session',
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 
     /*
     |--------------------------------------------------------------------------
@@ -151,8 +169,17 @@ return [
     |
     */
 
+<<<<<<< HEAD
     // 'domain' => env('SESSION_DOMAIN', null),
         'domain' => env('SESSION_DOMAIN', "http://localhost:8000/"),
+=======
+<<<<<<< HEAD
+    // 'domain' => env('SESSION_DOMAIN', null),
+        'domain' => env('SESSION_DOMAIN', "http://localhost:8000/"),
+=======
+    'domain' => env('SESSION_DOMAIN', null),
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 
     /*
     |--------------------------------------------------------------------------
@@ -180,6 +207,10 @@ return [
 
     'http_only' => true,
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
     /*
     |--------------------------------------------------------------------------
     | Same-Site Cookies
@@ -195,4 +226,9 @@ return [
 
     'same_site' => null,
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 ];

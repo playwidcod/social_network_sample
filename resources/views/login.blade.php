@@ -76,7 +76,14 @@ Password:<br>
     </div>
    @endif
 <input type="submit" class="submit" value="login" style="width: 155px;"> 
+<<<<<<< HEAD
 <a href="login/facebook">Login with social</a>
+=======
+<<<<<<< HEAD
+<a href="login/facebook">Login with social</a>
+=======
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 </form>
 <center>
 <label style="margin-left:30px;">Or</label><br>
@@ -146,4 +153,12 @@ $.validate({
     form.submit();
   }
 });
+<<<<<<< HEAD
 </script> -->
+=======
+<<<<<<< HEAD
+</script> -->
+=======
+</script> -->
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a

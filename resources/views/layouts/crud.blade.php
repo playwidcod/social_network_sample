@@ -210,6 +210,7 @@ sent{
                         alert("Happy B'day!!!");
                     }
                      $scope.bdaypro = year_age;
+<<<<<<< HEAD
 
                      $scope.gender = value.gender;
                       $scope.datee = value.datee;
@@ -243,6 +244,23 @@ sent{
                            }); 
                      }
                      
+=======
+                     //for date
+                     //forpost
+                     $scope.editpro_upd = function(){
+                        console.log($scope.namepro)
+                        console.log($scope.phonepro)
+                        console.log($scope.dateepro)
+                        console.log($scope.testtpro)
+                        console.log($scope.emailpro)
+                          // $http.post('/updatepro', $scope).success(function(data) {
+                          //    // datee =  $scope.dateepro;
+                          //    // gender = $scope.gender;
+                          //    // phone = $scope.phonepro;
+                          //    // profile_pic =  $scope.profile_pic;
+                          // });
+                     }
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
                      //forpost
               });
         });
@@ -383,6 +401,10 @@ sent{
           $(document).find(".chattings").find("user").parent().find("olderchat").children().remove();
         });
       });
+<<<<<<< HEAD
+=======
+
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
       $(document).on('click','.msg_send',function(){
           var mesge = $(this).parent().find('input.msg').val();
           var frdid = $(this).parent().find('user').attr('id');
@@ -463,6 +485,10 @@ sent{
     background-color: #2980B9;margin-left: 1260px;    position: fixed;
 }  
 </style>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 <div class="dropup">
   <button class="dropupbtn">Chat <label>Online:</label><cht></cht></button>
   <div class="dropup-content">

@@ -5,6 +5,10 @@
     "license": "MIT",
     "type": "project",
     "require": {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
@@ -22,6 +26,25 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+<<<<<<< HEAD
+=======
+=======
+        "php": ">=5.6.4",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0",
+        "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "~2.6"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
         ],
         "psr-4": {
             "App\\": "app/"
@@ -32,6 +55,10 @@
             "Tests\\": "tests/"
         }
     },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
     "extra": {
         "laravel": {
             "dont-discover": [
@@ -48,6 +75,25 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+<<<<<<< HEAD
+=======
+=======
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+>>>>>>> 580f059565a09bf54d379eb93e6b7ed6bf55ab45
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
         ]
     },
     "config": {

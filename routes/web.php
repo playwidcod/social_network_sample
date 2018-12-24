@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
+=======
+
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
 Auth::routes();
 
 Route::get('/', function () {
@@ -135,4 +139,8 @@ Route::post('/get_chats', 'messege_controller@get_chats')->middleware('ck_sessio
 
 
 //search controller
+<<<<<<< HEAD
 Route::post('/on_search', 'search_items@posts_on_search')->middleware('ck_session1');
+=======
+Route::post('/on_search', 'search_items@posts_on_search')->middleware('ck_session1');
+>>>>>>> b5a99ca91dca6a92e73ab7ed5d39d140919c6e3a
